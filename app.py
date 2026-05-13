@@ -14,33 +14,57 @@ rojo_up = "#b31d1d"
 dorado_up = "#b38e5d"
 gris_fondo = "#f4f4f4"
 
+# --- 1. CONFIGURACIÓN E IDENTIDAD VISUAL (PORTAL UP) ---
+st.set_page_config(page_title="UP Self-Service Portal", layout="wide", page_icon="🎓")
+
+# Colores oficiales
+azul_up = "#002b54"
+rojo_up = "#b31d1d"
+dorado_up = "#b38e5d"
+gris_fondo = "#f4f4f4"
+
 st.markdown(f"""
     <style>
-    .stApp {{ background-color: {gris_fondo}; }}
-    
-    /* Encabezado estilo Credencial/Portal */
+    /* 1. FORZAR TEMA CLARO: Fondo y Texto Base */
+    .stApp {{
+        background-color: {gris_fondo} !important;
+        color: #31333F !important;
+    }}
+
+    /* 2. FORZAR VISIBILIDAD DE TEXTOS (Labels, Párrafos, Títulos) */
+    label, p, span, h1, h2, h3, .stMarkdown {{
+        color: #31333F !important;
+    }}
+
+    /* 3. ARREGLAR INPUTS (Hacer que el texto escrito sea negro) */
+    input {{
+        color: #000000 !important;
+        background-color: #ffffff !important;
+    }}
+
+    /* Estilos de tus tarjetas y cabeceras (se mantienen igual pero con color forzado) */
     .portal-header {{
-        background-color: {azul_up};
-        color: white;
+        background-color: {azul_up} !important;
+        color: white !important;
         padding: 20px;
         border-radius: 8px 8px 0 0;
         font-family: 'Arial', sans-serif;
         border-bottom: 4px solid {dorado_up};
     }}
     
-    /* Tarjetas blancas con línea dorada */
     .up-card {{
-        background-color: #ffffff;
+        background-color: #ffffff !important;
         padding: 25px;
         border-radius: 0 0 8px 8px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         margin-bottom: 20px;
+        color: #31333F !important;
     }}
     
     .up-title {{
         font-family: 'Times New Roman', serif;
         font-size: 26px;
-        color: #333;
+        color: #333333 !important;
         margin-bottom: 5px;
     }}
     
@@ -51,9 +75,15 @@ st.markdown(f"""
         margin-bottom: 20px;
     }}
 
-    /* Estilo del Chat */
-    .chat-bubble-in {{ background-color: #f1f1f1; padding: 10px; border-radius: 10px; margin: 5px; border-left: 4px solid {dorado_up}; color: black; }}
-    .chat-bubble-out {{ background-color: {azul_up}; color: white !important; padding: 10px; border-radius: 10px; margin: 5px; text-align: right; }}
+    /* Chat bubbles (asegurar contraste) */
+    .chat-bubble-in {{ background-color: #e8e8e8 !important; color: black !important; padding: 10px; border-radius: 10px; margin: 5px; border-left: 4px solid {dorado_up}; }}
+    .chat-bubble-out {{ background-color: {azul_up} !important; color: white !important; padding: 10px; border-radius: 10px; margin: 5px; text-align: right; }}
+
+    /* Forzar que el sidebar también sea claro */
+    [data-testid="stSidebar"] {{
+        background-color: #ffffff !important;
+        color: #31333F !important;
+    }}
     </style>
     """, unsafe_allow_html=True)
 
